@@ -2,37 +2,37 @@ coverage:
   status:
     project:
       default:
-        target: auto  # strictly increasing coverage
-        threshold: 3% # buffer for coverage drop
+        target: auto  # Automatically set target coverage based on historical data
+        threshold: 3% # Allowable coverage drop before raising a warning
 
 comment:
-  layout: "header, diff, flags, components"  # show component info in the PR comment
-  
+  layout: "header, diff, flags, components"  # Specify the layout for the PR comment, showing component info
+
 component_management:
-  default_rules:  # default rules that will be inherited by all components
+  default_rules:  # Default rules applied to all components unless overridden
     statuses:
-      - type: project # in this case every component that does not have a status defined will have a project type one
+      - type: project # Default status type for components without specific status
         target: auto
         branches:
-          - "!main"
+          - "!main"  # Apply rules to all branches except 'main'
   individual_components:
     - component_id: module_core
       name: core
       paths:
-        - solidity/contracts/Mailbox.sol
+        - solidity/contracts/Mailbox.sol  # Path to the core component
     - component_id: module_hooks
       name: hooks
       paths:
-        - solidity/contracts/hooks/**
+        - solidity/contracts/hooks/**  # Path to hooks component, includes all subdirectories
     - component_id: module_isms
       name: isms
       paths:
-        - solidity/contracts/isms/**
+        - solidity/contracts/isms/**  # Path to isms component, includes all subdirectories
     - component_id: module_token
       name: token
       paths:
-        - solidity/contracts/token/**
+        - solidity/contracts/token/**  # Path to token component, includes all subdirectories
     - component_id: module_middlewares
       name: middlewares
       paths:
-        - solidity/contracts/middleware/**
+        - solidity/contracts/middleware/**  # Path to middlewares component, includes all subdirectories
